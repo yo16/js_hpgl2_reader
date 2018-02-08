@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>HPGL2 Reader</title>
+	<link rel="stylesheet" type="text/css" href="./css/hpgl2reader.css" />
+	
+	<script type="text/javascript" src="./js/lib/jquery-2.1.4.min.js"></script>
+	
+	<script type="text/javascript" src="./js/matrixlib.js"></script>
+	<script type="text/javascript" src="./js/hpgl2Format.js"></script>
+	<script type="text/javascript" src="./js/clsCanvas.js"></script>
+	<script type="text/javascript" src="./js/clsHpgl2.js"></script>
+	<script type="text/javascript" src="./js/hpgl2reader_main.js"></script>
+</head>
+
+<body>
+	<input type="file" id="inputFile1" />
+	
+	<hr />
+	
+	<canvas id="canvas1"></canvas>
+	<hr />
+	
+	<input type="button" value="left down" id="btnDebug_ldown" />
+	<input type="button" value="right down" id="btnDebug_rdown" />
+	<br /><br />
+	
+	<input type="button" value="up" id="btnDebug_moveUp" /><br />
+	<input type="button" value="left" id="btnDebug_moveLeft" />
+	<input type="button" value="right" id="btnDebug_moveRight" /><br />
+	<input type="button" value="down" id="btnDebug_moveDown" />
+	<br /><br />
+	
+	<input type="button" value="mouseup" id="btnDebug_up" />
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+/*
+ * 2018 (c) yo16
+ */
+
+body {
+	background-color:#fcfccc;
+}
+
+canvas{
+	width:600px;
+	height:500px;
+}
