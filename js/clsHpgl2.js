@@ -38,10 +38,16 @@ function clsHpgl2( pFileInfo, pStrFile ){
 			// １コマンドの文字列長
 			var len = mne.length + strParams.length;
 			
+			// hpgl2FormatのInstructionsに登録されているグループ
+			var InsSettings = (mne in Instructions.settings);
+			var InsDrawings = (mne in Instructions.drawings);
+			
 			// 高速化因子
 			var speedupElm = getSpeedupElement(mne, params);
 			
-			return {"Mnemonic":mne, "Parameters":params, "len":len, "SpeedupElement":speedupElm};
+			return {"Mnemonic":mne, "Parameters":params, "len":len, 
+				"IsSettingInstruction" : InsSettings, "IsDrawingInstruction" : InsDrawings,
+				"SpeedupElement":speedupElm};
 		}
 		
 		// 読んでいる文字列（読み終わった分は削除していく）
@@ -91,7 +97,7 @@ function clsHpgl2( pFileInfo, pStrFile ){
 		curPos : {x:0.0, y:0.0}
 	};
 	this.penDown = false;
-	// 描画処理
+	// 描画処理(表示のinstructionのみ実行)
 	this.draw = function( matrix, canvasName )
 	{
 		var ctx = $("#"+canvasName)[0].getContext("2d");
@@ -99,7 +105,7 @@ function clsHpgl2( pFileInfo, pStrFile ){
 //console.log("要素数:"+this.hpgl2.length);
 		for( var i=0; i<this.hpgl2.length; i++ ){
 			// draw系のinstructionのみ実行
-			if( this.hpgl2[i].Mnemonic in Instructions.drawings ){
+			if( this.hpgl2[i].IsDrawingInstruction ){
 				this.executeOne( this.hpgl2[i], ctx, matrix );
 			}
 		}
@@ -108,12 +114,13 @@ function clsHpgl2( pFileInfo, pStrFile ){
 	this.configulate = function( matrix )
 	{
 		for( var i=0; i<this.hpgl2.length; i++ ){
-			if( this.hpgl2[i].Mnemonic in Instructions.settings ){
+			if( this.hpgl2[i].IsSettingsInstruction ){
 				this.executeOne( this.hpgl2[i], matrix );
 			}
 		}
 	}
 	
+	// instrutionを実行
 	this.executeOne = function( objHpgl2, ctx, matrix ){
 		var mne = objHpgl2.Mnemonic;
 		var params = objHpgl2.Parameters;
