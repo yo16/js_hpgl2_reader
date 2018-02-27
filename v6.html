@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>v6</title>
+	<link rel="stylesheet" type="text/css" href="./css/v6.css" />
+	
+	<script type="text/javascript" src="./js/lib/jquery-2.1.4.min.js"></script>
+	
+	<script type="text/javascript" src="./20180227_v6backup/matrixlib.js"></script>
+	<script type="text/javascript" src="./20180227_v6backup/hpgl2Format.js"></script>
+	<script type="text/javascript" src="./20180227_v6backup/clsMouseEventInfo.js"></script>
+	<script type="text/javascript" src="./20180227_v6backup/clsCanvas.js"></script>
+	<script type="text/javascript" src="./20180227_v6backup/clsHpgl2.js"></script>
+	<script type="text/javascript" src="./20180227_v6backup/clsImage.js"></script>
+	<script type="text/javascript" src="./20180227_v6backup/v6_main.js"></script>
+</head>
+
+<body>
+	<table id="tblFiles">
+	<tr>
+	<td>
+		<input type="file" id="inputFile1" />
+		
+		<hr />
+		
+		<canvas id="canvas1"></canvas>
+		<br />
+		<canvas id="canvas1_img"></canvas>
+	</td>
+	<td>
+<!--
+canvas1の開発が全部済んだら、コピーしてcanvas2を作る
+		<input type="file" id="inputFile2" />
+		
+		<hr />
+		
+		<canvas id="canvas2"></canvas>
+		<br />
+		<canvas id="canvas2_img"></canvas>
+-->
+	</td>
+	</tr>
+	</table>
+	
+	<hr />
+	
+	configration<br />
+	Plot精度：<select id="selAccuracy">
+<!--	<option value="1016">超高精度(40dot/mm = 0.025mm/dot = 1016dpi)</option>
+	<option value="508">高精度(20dot/mm = 0.05mm/dot = 508dpi)</option>
+	<option selected value="254">通常(10dot/mm = 0.1mm/dot = 254dpi)</option>
+	<option value="127" selected >低精度(5dot/mm = 0.2mm/dot = 127dpi)</option>
+-->
+	<option value="100"        >100 dpi(39dot/cm)</option>
+	<option value="50"         >50 dpi(20dot/cm)</option>
+	<option value="20" selected>20 dpi(8dot/cm)</option>
+	<option value="10"         >10 dpi(4dot/cm)</option>
+	</select>
+	
+	
+	<hr />
+	mouse simulator<br />
+	<input type="button" value="left down" id="btnDebug_ldown" />
+	<input type="button" value="right down" id="btnDebug_rdown" />
+	<br /><br />
+	
+	<input type="button" value="up" id="btnDebug_moveUp" /><br />
+	<input type="button" value="left" id="btnDebug_moveLeft" />
+	<input type="button" value="right" id="btnDebug_moveRight" /><br />
+	<input type="button" value="down" id="btnDebug_moveDown" />
+	<br /><br />
+	
+	<input type="button" value="mouseup" id="btnDebug_up" />
+
+	<input type="button" value="** DEBUG **" id="btnDebug" />
+</body>
+
+</html>

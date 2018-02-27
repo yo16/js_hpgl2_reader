@@ -648,7 +648,12 @@ var Hpgl2Format = {
 		var matrixNoMove = matrixlib.copy(matrix);
 		matrixNoMove[0][2] = 0; matrixNoMove[1][2] = 0;	// 平行移動成分を除く
 		var newPenVec = matrixlib.apply3x1(matrixNoMove, [penWidth,0,0]);
-		ctx.lineWidth = Math.sqrt( newPenVec[0]*newPenVec[0] + newPenVec[1]*newPenVec[1] );
+		var newLineWidth = Math.sqrt( newPenVec[0]*newPenVec[0] + newPenVec[1]*newPenVec[1] );
+		// 細い場合に適当に太くする
+		if( newLineWidth < 0.5 ){
+			newLineWidth = 0.5;
+		}
+		ctx.lineWidth = newLineWidth;
 //console.log("lineWidth:"+ctx.lineWidth);
 	},
 	

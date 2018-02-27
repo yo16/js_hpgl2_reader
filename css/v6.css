@@ -1,0 +1,18 @@
+body {
+	background-color:#896;
+	color:#ccc;
+}
+
+/* HPGL2のcanvasとImageのcanvasは同じサイズ */
+#canvas1, #canvas2, #canvas1_img, #canvas2_img{
+	width:300px;
+	height:200px;
+}
+/* HPGL2のcanvasは非表示 */
+#canvas1x, #canvas2{
+	display:none;
+}
+
+hr {
+	border:1px solid #785;
+}
